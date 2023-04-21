@@ -11,29 +11,27 @@ def open_database(db_name):
     return cur, conn
 
 #calculation
-#select data from table to make the highest rated hotel per city list
 def highestratedhotel(cur,conn):
-    info = cur.execute("select hotel_name, city, rating from YelpData order by city")
-    cs = info.fetchall() #fetchall converts our data into a list
+    info = cur.execute("select hotel_name, city, rating, cost from YelpData order by city")
+    cs = info.fetchall()
     highestRated = {}
 
     # Loop through the list of hotels and update the dictionary if we find a higher rated hotel for a given city
     for hotel in cs:
-        name, city, rating = hotel
+        name, city, rating, cost = hotel
         if city not in highestRated or rating > highestRated[city][1]:
-            highestRated[city] = (name, rating, city)
+            highestRated[city] = (name, rating, city, cost)
 
-    # Convert the dictionary to a list of tuples and return it
+    # Convert the dictionary to a list of tuples
     highestratedhotelLst = list(highestRated.values())
 
-    #writing the list to a file
     with open('highest_rated_hotels.txt', 'w') as f:
         f.write("Hotel Name, Rating, City\n")
         for hotel in highestratedhotelLst:
             f.write("{}, {}, {}\n".format(hotel[0], hotel[1], hotel[2]))
     return highestratedhotelLst
 
-#using the highest rated hotel list to create a bar graph 
+#using the highest rated hotel list  
 def bargraphHotel(hotelList):
     # Create empty lists for each category
     hotel_names = []
@@ -49,17 +47,19 @@ def bargraphHotel(hotelList):
     city = cities
     values = ratings
     
-    fig = plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(15, 8))
     
     # creating the bar plot
-    plt.bar(city, values, color ='maroon',
-            width = 0.4)
+    plt.bar(city, values, color ='maroon', width = 0.5)
     
     plt.xlabel("City")
     plt.ylabel("Rating")
     plt.title("Highest Rated Hotel for each City")
-    plt.show()
+    
+    # rotate x-axis labels for better visibility
+    plt.xticks(rotation=90)
 
+    plt.show()
 
 def scatterplot(hotelList):
     hotel_names = []

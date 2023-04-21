@@ -1,11 +1,13 @@
 Hotel Name, Rating, City
 Boulder Dam Hotel, 4.5, Boulder City
-Hampton Inn & Suites Carson City, 3.5, Carson City
-TownePlace Suites Elko, 4.5, Elko
-Best Western Fallon Inn & Suites, 4, Fallon
-Comfort Suites Fernley, 4, Fernley
+Staybridge Suites Carson City - Tahoe Area, 4, Carson City
+General Elliott Inn, 5, Elko
+Diamond Motel & Campground, 5, Fallon
+Veterans Guest House, 5, Fernley
 M Resort Spa Casino, 4, Henderson
-Fairfield Inn & Suites Dallas Mesquite, 3, Mesquite
-Callville Bay Resort & Marina, 3.5, North Las Vegas
+The English Hotel, 4.5, Las Vegas
+Tru by Hilton Rockwall Dallas, 4.5, Mesquite
+NoMad Las Vegas, 4, North Las Vegas
 Element Reno Experience District, 4.5, Reno
-Residence Inn Reno Sparks, 3.5, Sparks
+Our Place Hotel, 4.5, Sparks
+The Martin Hotel, 4.5, Winnemucca
