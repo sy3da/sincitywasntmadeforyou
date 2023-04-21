@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from geopy.distance import distance
 
 # Connect to the database
-conn = sqlite3.connect('notsincity.db')
+conn = sqlite3.connect('not_sin_city.db')
 
 # Execute the join query
 query = '''

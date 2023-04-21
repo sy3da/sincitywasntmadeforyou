@@ -3,7 +3,7 @@
 import sqlite3
 import matplotlib.pyplot as plt
 
-conn = sqlite3.connect('notsincity.db')
+conn = sqlite3.connect('not_sin_city.db')
 cur = conn.cursor()
 cur.execute("SELECT cities.city, COUNT(*) as num_pois FROM pois INNER JOIN cities ON pois.city_id=cities.city_id GROUP BY cities.city")
 data = cur.fetchall()
