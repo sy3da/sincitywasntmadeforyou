@@ -1,102 +1,109 @@
-
 import requests
 import sqlite3
 import json
 import time
-import matplotlib.pyplot as plt
-
-'''
-todo
-
-make table for just las vegas results, or just for restaurants
-make the two tables have shared integer keys for a join
-make second plot comparing average las vegas tourist attractions compared to total average of all other cities
-'''
 
 
 
 
 # set up database connection
-conn = sqlite3.connect('tourist_attractions.db')
-c = conn.cursor()
 
-# create table if it does not exist
-c.execute('''CREATE TABLE IF NOT EXISTS tourist_attractions
-             (name text, category text, address text, lat real, lon real, city text, UNIQUE(name, address))''')
+conn = sqlite3.connect('notsincity.db')
 
+conn.execute('''CREATE TABLE IF NOT EXISTS cities
+            (city_id INTEGER PRIMARY KEY AUTOINCREMENT, city text UNIQUE)''')
+conn.execute('''CREATE TABLE IF NOT EXISTS pois
+            (poi_id INTEGER PRIMARY KEY AUTOINCREMENT, name text, city_id INT, FOREIGN KEY (city_id) REFERENCES cities(city_id))''')
+conn.execute('''CREATE TABLE IF NOT EXISTS positions
+             (poi_id INT, lat real, lon real, FOREIGN KEY (poi_id) REFERENCES pois(poi_id))''')
 # set up API request parameters
 api_key = "cx2F39RYHouQTgQi2sV4tuBXMyrJQJ6t"
 radius = 20000  # 10 km radius around each city  
 cities = {
           "Henderson": (36.0397, -114.9817),
-          "North Las Vegas": (36.1989, -115.1175), 
           "Reno": (39.5296, -119.8138), 
+          "North Las Vegas": (36.1989, -115.1175), 
           "Sparks": (39.5348, -119.7527), 
           "Carson City": (39.1638, -119.7674),
-          "Fernley": (39.6080, -119.2518),
-          "Mesquite": (36.8055,-114.0672),
+          "Sun Valley": (39.5963, -119.7760),
           "Elko": (40.8324,-115.7631),
+          "Dayton": (39.2408, -119.5787),
           "Boulder City": (35.9782,-114.8345),
+          "Gardnerville Ranchos": (38.8975, -119.7516),
+          "Cold Springs": (39.6967, -119.9319), 
+          "Incline Village": (39.2503, -119.9656),
           "Fallon": (39.4749,-118.7770),
-          "Winnemucca": (40.9730,-117.7357),
+          "Laughlin": (35.1678, -114.5730),
+          "Silver Springs": (39.3884, -119.2219),
           "West Wendover": (40.7391,-114.0733),
-          "Ely": (39.2533,-114.8742),
-          "Yerington": (38.9858,-119.1629),
+          "Ely": (39.2533,-114.8742), 
           "Carlin": (40.7138,-116.1040),
-          "Lovelock": (40.1794,-118.4735),
-          "Wells": (41.1116,-114.9645),
-          "Caliente": (37.6150,-114.5119),
           }
-    
-    
-# loop over each city and make API requests
+cur = conn.cursor()
 
+
+# Loop over each city and make API requests
+total_count = 0
+poi_count = 0
+position_count = 0
+
+cur.execute("SELECT COUNT(*) FROM cities")
+row_count = cur.fetchone()[0]
+city_number = 0
 for city, (lat, lon) in cities.items():
-    print(f"Requesting tourist attractions in {city}...")
-    url = f"https://api.tomtom.com/search/2/categorySearch/important%20tourist%20attraction.json?key={api_key}&lat={lat}&lon={lon}&radius={radius}"
-    response = requests.get(url)
-    data = json.loads(response.text)
-    results = [[r["poi"]["name"], r["poi"]["categories"][0], r["address"]["freeformAddress"], r["position"]["lat"], r["position"]["lon"], city] for r in data["results"]]
+  if total_count >= 50:
+    break
+  if row_count != 0 and row_count > city_number:
+    city_number += 1
+    continue 
+  url = f"https://api.tomtom.com/search/2/categorySearch/tourist.json?key={api_key}&lat={lat}&lon={lon}&radius={radius}&limit=100"
+  response = requests.get(url)
+  data = json.loads(response.text)
+  the_next_city = city
+  # Iterate over the results and insert into tables
+  for result in data['results']:
+    poi_name = result['poi']['name']
+    city_name = result['address']['localName']
+    if city_name == 'Las Vegas':
+      continue
+  
+    # Insert into the cities table
+    try:
+      conn.execute("INSERT INTO cities (city) VALUES (?)", (city_name,))
+    except sqlite3.IntegrityError:
+      pass
     
-    # insert results into database, ignoring duplicates
+    # Get the city_id of the current city
+    cur.execute("SELECT city_id FROM cities WHERE city=?", (city_name,))
+    city_id = cur.fetchone()[0]
     
-    for r in results:
-      ok = r[2].split(',')
-      if (r[1] == "important tourist attraction" and ok[1].strip() != "Las Vegas" and ok[0].strip() != "Las Vegas"):
-        try:
-          c.execute("INSERT INTO tourist_attractions VALUES (?, ?, ?, ?, ?, ?)", r)
-        except sqlite3.IntegrityError:
-          pass
+    # Insert into the pois table with the current city_id
+    try:
+      if poi_count >= 25:
+        break
+      conn.execute("INSERT INTO pois (name, city_id) VALUES (?, ?)", (poi_name, city_id))
+      poi_count += 1
+      total_count += 1
+    except sqlite3.IntegrityError:
+      pass
+    
+    # Get the poi_id of the current poi
+    cur.execute("SELECT poi_id FROM pois WHERE name=?", (poi_name,))
+    poi_id = cur.fetchone()[0]
+    
+    # Insert into the positions table with the current poi_id
+    position_result = result['position']
+    try:
+      if position_count >= 25:
+        break
+      conn.execute("INSERT INTO positions (poi_id, lat, lon) VALUES (?, ?, ?)", (poi_id, position_result['lat'], position_result['lon']))
+      position_count += 1
+      total_count += 1
+    except sqlite3.IntegrityError:
+      pass
 
+  
     # commit changes to database
-    conn.commit()
+conn.commit()
 
-# calcul
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# ate average number of tourist attractions around each city
-averages = {}
-category = "important tourist attraction"
-for city in cities.keys():
-    c.execute(f"SELECT COUNT(*) FROM tourist_attractions WHERE city='{city}' AND category='{category}'")
-    count = c.fetchone()[0]
-    averages[city] = count
 
-# plot averages using Matplotlib
-plt.bar(range(len(averages)), list(averages.values()), align='center')
-plt.xticks(range(len(averages)), list(averages.keys()))
-plt.title("Average Number of Tourist Attractions within 10km Radius")
-plt.xlabel("City")
-plt.ylabel("Number of Tourist Attractions")
-plt.show()
-plt.savefig('average_tourist_attractions.png')
-
-# close database connection
-conn.close()
