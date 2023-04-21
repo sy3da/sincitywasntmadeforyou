@@ -4,7 +4,7 @@ from elijah_calculations import average_distance_between_tourist_locations_per_c
 
 
 def main():
-    tomtom_data()
+    #tomtom_data()
     tourist_attractions_per_city()
     average_distance_between_tourist_locations_per_city()
 
