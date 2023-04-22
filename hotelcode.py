@@ -5,20 +5,24 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 #Getting API Data and storing into List
-def getYelpAPIData():
+def getYelpAPIData(cur):
     api_key = '84yyM6N4wVI_D4s419Jt40ZzW33AUxXvmR1hHUfR4j97ce2WibAUber4MGGirF_e7RjyF0PEd_tJV6F-NfZmBM0Xakb5x3yFR8o_Eh-a81v-hDkq3dm-u-4KWfkuZHYx'
     cities = ['Henderson', 'Reno', 'Sparks', 'Carson City', 'Sun Valley', 'Elko', 'Boulder City', 'Fallon', 'Winnemucca']
     client = YelpAPI(api_key)
 
     hotel_list = []
-
+    cur.execute("SELECT COUNT(*) FROM YelpData")
+    row_count = cur.fetchone()[0]
+    city_number = 0
     for city in cities:
         # Yelp API parameters
         params = {
             'term': 'hotel',
             'location': city,
-            'limit': 25
+            'limit': 15
         }
+        if row_count != 0 and row_count > city_number:
+            city_number += 1
         response = client.search_query(**params)
 
         for business in response['businesses']:
@@ -40,7 +44,7 @@ def open_database(db_name):
 
 def make_yelp_table(data, cur, conn):
     hotel_count = 0
-    cur.execute("CREATE TABLE IF NOT EXISTS YelpData (hotel_name TEXT, city TEXT, rating INTEGER, cost TEXT, UNIQUE(hotel_name, city))")
+    
     for record in data:
         if(hotel_count >= 25):
             break
@@ -54,13 +58,3 @@ def make_yelp_table(data, cur, conn):
     conn.commit()
 
 
-def main():
-    finalList = []
-    yelpData = getYelpAPIData()
-    for hotel in yelpData:
-        finalList.append(hotel)
-   #print(finalList)
-    cur, conn = open_database('not_sin_city.db')
-    make_yelp_table(finalList, cur, conn)
-
-main()

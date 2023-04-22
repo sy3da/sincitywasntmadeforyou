@@ -36,9 +36,3 @@ def make_pop_table(cur, conn):
 
     # Commit the changes and close the connection
     conn.commit()
-
-def main():
-    cur, conn = open_database('not_sin_city.db') # Connect to the database
-    make_pop_table(cur, conn)
-
-main()
