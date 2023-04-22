@@ -56,5 +56,3 @@ def make_yelp_table(data, cur, conn):
             # Handle duplicate record
             pass
     conn.commit()
-
-
