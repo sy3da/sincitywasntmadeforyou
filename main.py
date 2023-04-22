@@ -9,11 +9,13 @@ import shutil
 
 import tomtom 
 import calc_visualizations
+import websiteCode
 
 
 def main():
     
     #tomtom.tomtom_data()
+    websiteCode.soup_data()
     calc_visualizations.tourist_attractions_per_city()
     calc_visualizations.average_distance_between_tourist_locations_per_city()
     

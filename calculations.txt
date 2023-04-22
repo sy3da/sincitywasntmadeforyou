@@ -54,3 +54,59 @@ Element Reno Experience District, 4.5, Reno
 Hampton Inn & Suites Stroud, 4, Sparks
 Best Western Plus Gold Country Inn, 4, Winnemucca
 
+
+City	Number of Tourist Attractions
+Boulder City	5
+Carlin	5
+Carson City	17
+Dayton	2
+Ely	2
+Fallon	2
+Genoa	1
+Glenbrook	2
+Henderson	10
+Incline Village	8
+Minden	1
+Reno	35
+Silver Springs	4
+Sparks	2
+Tahoe City	7
+Truckee	2
+Virginia City	6
+Wendover	1
+West Wendover	3
+Average	6.052631578947368
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 2.83 km
+Sparks: 11.59 km
+Carson City: 1.02 km
+Virginia City: 1.71 km
+Dayton: 0.21 km
+Incline Village: 1.05 km
+Truckee: 7.08 km
+Tahoe City: 2.23 km
+Fallon: 0.06 km
+Silver Springs: 9.99 km
+West Wendover: 1.57 km
+Ely: 1.22 km
+Carlin: 9.75 km
+
+
+ Hotel Name, Rating, City
+Boulder Dam Hotel, 4.5, Boulder City
+Hampton Inn & Suites Carson City, 3.5, Carson City
+TownePlace Suites Elko, 4.5, Elko
+Diamond Motel & Campground, 5, Fallon
+Comfort Suites Fernley, 4, Fernley
+M Resort Spa Casino, 4, Henderson
+The Venetian Resort Las Vegas, 4, Las Vegas
+Fairfield Inn & Suites Dallas Mesquite, 3, Mesquite
+Callville Bay Resort & Marina, 3.5, North Las Vegas
+Element Reno Experience District, 4.5, Reno
+Hampton Inn & Suites Stroud, 4, Sparks
+Best Western Plus Gold Country Inn, 4, Winnemucca
+
