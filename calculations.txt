@@ -20,80 +20,255 @@ Element Reno Experience District, 4.5, Reno
 City	Number of Tourist Attractions
 Boulder City	5
 Henderson	10
-Reno	10
-Average	8.333333333333334
+Reno	33
+Sparks	2
+Average	12.5
 
 
 City	Average Distance between Tourist Locations
 Henderson: 5.43 km
 Boulder City: 8.68 km
-Reno: 0.50 km
-
-
-City	Number of Tourist Attractions
-Boulder City	5
-Henderson	10
-Reno	10
-Average	8.333333333333334
-
-
-City	Average Distance between Tourist Locations
-Henderson: 5.43 km
-Boulder City: 8.68 km
-Reno: 0.50 km
+Reno: 1.78 km
+Sparks: 11.59 km
 
 
  Hotel Name, Rating, City
 Staybridge Suites Carson City - Tahoe Area, 4, Carson City
 M Resort Spa Casino, 4, Henderson
 Element Reno Experience District, 4.5, Reno
-Our Place Hotel, 4.5, Sparks
+The Jesse, 4.5, Sparks
 
 
 City	Number of Tourist Attractions
 Boulder City	5
+Carson City	9
+Dayton	2
+Genoa	1
+Glenbrook	1
 Henderson	10
-Reno	10
-Average	8.333333333333334
+Incline Village	4
+Minden	1
+Reno	34
+Sparks	2
+Virginia City	6
+Average	6.818181818181818
 
 
 City	Average Distance between Tourist Locations
 Henderson: 5.43 km
 Boulder City: 8.68 km
-Reno: 0.50 km
-
-
-City	Number of Tourist Attractions
-Boulder City	5
-Henderson	10
-Reno	10
-Average	8.333333333333334
-
-
-City	Average Distance between Tourist Locations
-Henderson: 5.43 km
-Boulder City: 8.68 km
-Reno: 0.50 km
-
-
-City	Number of Tourist Attractions
-Boulder City	5
-Henderson	10
-Reno	10
-Average	8.333333333333334
-
-
-City	Average Distance between Tourist Locations
-Henderson: 5.43 km
-Boulder City: 8.68 km
-Reno: 0.50 km
+Reno: 1.83 km
+Sparks: 11.59 km
+Carson City: 1.39 km
+Virginia City: 1.71 km
+Dayton: 0.21 km
+Incline Village: 1.22 km
 
 
  Hotel Name, Rating, City
 Edith Palmer's Country Inn, 4.5, Carson City
+M Resort Spa Casino, 4, Henderson
+Element Reno Experience District, 4.5, Reno
+The Jesse, 4.5, Sparks
+Knob Hill Inn, 4.5, Sun Valley
+
+
+City	Number of Tourist Attractions
+Boulder City	5
+Carson City	17
+Dayton	2
+Fallon	2
+Genoa	1
+Glenbrook	2
+Henderson	10
+Incline Village	8
+Minden	1
+Reno	35
+Sparks	2
+Tahoe City	7
+Truckee	2
+Virginia City	6
+Average	7.142857142857143
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 2.83 km
+Sparks: 11.59 km
+Carson City: 1.02 km
+Virginia City: 1.71 km
+Dayton: 0.21 km
+Incline Village: 1.05 km
+Truckee: 7.08 km
+Tahoe City: 2.23 km
+Fallon: 0.06 km
+
+
+ Hotel Name, Rating, City
+Boulder Dam Hotel, 4.5, Boulder City
+Edith Palmer's Country Inn, 4.5, Carson City
 General Elliott Inn, 5, Elko
 M Resort Spa Casino, 4, Henderson
 Element Reno Experience District, 4.5, Reno
-Our Place Hotel, 4.5, Sparks
+The Jesse, 4.5, Sparks
 Knob Hill Inn, 4.5, Sun Valley
+
+
+City	Number of Tourist Attractions
+Boulder City	5
+Carlin	5
+Carson City	17
+Dayton	2
+Ely	2
+Fallon	2
+Genoa	1
+Glenbrook	2
+Henderson	10
+Incline Village	8
+Minden	1
+Reno	35
+Silver Springs	4
+Sparks	2
+Tahoe City	7
+Truckee	2
+Virginia City	6
+Wendover	1
+West Wendover	3
+Average	6.052631578947368
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 2.83 km
+Sparks: 11.59 km
+Carson City: 1.02 km
+Virginia City: 1.71 km
+Dayton: 0.21 km
+Incline Village: 1.05 km
+Truckee: 7.08 km
+Tahoe City: 2.23 km
+Fallon: 0.06 km
+Silver Springs: 9.99 km
+West Wendover: 1.57 km
+Ely: 1.22 km
+Carlin: 9.75 km
+
+
+ Hotel Name, Rating, City
+Boulder Dam Hotel, 4.5, Boulder City
+Edith Palmer's Country Inn, 4.5, Carson City
+General Elliott Inn, 5, Elko
+Diamond Motel & Campground, 5, Fallon
+M Resort Spa Casino, 4, Henderson
+Element Reno Experience District, 4.5, Reno
+The Jesse, 4.5, Sparks
+Knob Hill Inn, 4.5, Sun Valley
+
+
+City	Number of Tourist Attractions
+Boulder City	5
+Carlin	5
+Carson City	17
+Dayton	2
+Ely	2
+Fallon	2
+Genoa	1
+Glenbrook	2
+Henderson	10
+Incline Village	8
+Minden	1
+Reno	35
+Silver Springs	4
+Sparks	2
+Tahoe City	7
+Truckee	2
+Virginia City	6
+Wendover	1
+West Wendover	3
+Average	6.052631578947368
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 2.83 km
+Sparks: 11.59 km
+Carson City: 1.02 km
+Virginia City: 1.71 km
+Dayton: 0.21 km
+Incline Village: 1.05 km
+Truckee: 7.08 km
+Tahoe City: 2.23 km
+Fallon: 0.06 km
+Silver Springs: 9.99 km
+West Wendover: 1.57 km
+Ely: 1.22 km
+Carlin: 9.75 km
+
+
+ Hotel Name, Rating, City
+Boulder Dam Hotel, 4.5, Boulder City
+Edith Palmer's Country Inn, 4.5, Carson City
+General Elliott Inn, 5, Elko
+Diamond Motel & Campground, 5, Fallon
+M Resort Spa Casino, 4, Henderson
+Element Reno Experience District, 4.5, Reno
+The Jesse, 4.5, Sparks
+Knob Hill Inn, 4.5, Sun Valley
+The Martin Hotel, 4.5, Winnemucca
+
+
+City	Number of Tourist Attractions
+Boulder City	5
+Carlin	5
+Carson City	17
+Dayton	2
+Ely	2
+Fallon	2
+Genoa	1
+Glenbrook	2
+Henderson	10
+Incline Village	8
+Minden	1
+Reno	35
+Silver Springs	4
+Sparks	2
+Tahoe City	7
+Truckee	2
+Virginia City	6
+Wendover	1
+West Wendover	3
+Average	6.052631578947368
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 2.83 km
+Sparks: 11.59 km
+Carson City: 1.02 km
+Virginia City: 1.71 km
+Dayton: 0.21 km
+Incline Village: 1.05 km
+Truckee: 7.08 km
+Tahoe City: 2.23 km
+Fallon: 0.06 km
+Silver Springs: 9.99 km
+West Wendover: 1.57 km
+Ely: 1.22 km
+Carlin: 9.75 km
+
+
+ Hotel Name, Rating, City
+Boulder Dam Hotel, 4.5, Boulder City
+Edith Palmer's Country Inn, 4.5, Carson City
+General Elliott Inn, 5, Elko
+Diamond Motel & Campground, 5, Fallon
+M Resort Spa Casino, 4, Henderson
+Element Reno Experience District, 4.5, Reno
+The Jesse, 4.5, Sparks
+Knob Hill Inn, 4.5, Sun Valley
+The Martin Hotel, 4.5, Winnemucca
 
