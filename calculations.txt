@@ -16,3 +16,84 @@ Reno: 0.50 km
 M Resort Spa Casino, 4, Henderson
 Element Reno Experience District, 4.5, Reno
 
+
+City	Number of Tourist Attractions
+Boulder City	5
+Henderson	10
+Reno	10
+Average	8.333333333333334
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 0.50 km
+
+
+City	Number of Tourist Attractions
+Boulder City	5
+Henderson	10
+Reno	10
+Average	8.333333333333334
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 0.50 km
+
+
+ Hotel Name, Rating, City
+Staybridge Suites Carson City - Tahoe Area, 4, Carson City
+M Resort Spa Casino, 4, Henderson
+Element Reno Experience District, 4.5, Reno
+Our Place Hotel, 4.5, Sparks
+
+
+City	Number of Tourist Attractions
+Boulder City	5
+Henderson	10
+Reno	10
+Average	8.333333333333334
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 0.50 km
+
+
+City	Number of Tourist Attractions
+Boulder City	5
+Henderson	10
+Reno	10
+Average	8.333333333333334
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 0.50 km
+
+
+City	Number of Tourist Attractions
+Boulder City	5
+Henderson	10
+Reno	10
+Average	8.333333333333334
+
+
+City	Average Distance between Tourist Locations
+Henderson: 5.43 km
+Boulder City: 8.68 km
+Reno: 0.50 km
+
+
+ Hotel Name, Rating, City
+Edith Palmer's Country Inn, 4.5, Carson City
+General Elliott Inn, 5, Elko
+M Resort Spa Casino, 4, Henderson
+Element Reno Experience District, 4.5, Reno
+Our Place Hotel, 4.5, Sparks
+Knob Hill Inn, 4.5, Sun Valley
+

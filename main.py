@@ -16,11 +16,12 @@ import hotelcode
 
 def main():
     
-    tomtom.tomtom_data()
+   # tomtom.tomtom_data()
     cur, conn = websiteCode.open_database('not_sin_city.db') # Connect to the database
     calc_visualizations.tourist_attractions_per_city()
     calc_visualizations.average_distance_between_tourist_locations_per_city()
     websiteCode.make_pop_table(cur, conn)
+    calc_visualizations.city_pop_proportions()
     
     finalList = []
     cur, conn = hotelcode.open_database('not_sin_city.db')

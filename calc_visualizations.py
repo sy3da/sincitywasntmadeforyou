@@ -171,29 +171,24 @@ def average_distance_between_tourist_locations_per_city():
 
 def city_pop_proportions():
     conn = sqlite3.connect('not_sin_city.db')
-
     cur = conn.cursor()
     cur.execute('SELECT city, population FROM populations')
-
     result = cur.fetchall()
 
-    cities =[]
-    pops =[]
+    cities = []
+    pops = []
     for item in result:
         cities.append(item[0])
         pops.append(item[1])
 
-    plt.subplots()
-    plt.pie(cities, labels=pops)
-    plt.title('Cities by Population in Nebraska', fontsize=16)
-    plt.pie(cities, explode = explode, labels=pops, autopct='%1.1f%%', shadow=True, startangle=90)
-    explode = (0, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1)  # only "explode" the 2nd slice and smallest slice
-    plt.savefig('cities_by_pop_NE.png')
+   
 
-city_pop_proportions()
+    # add some dummy cities with zero population
+    for i in range(126 - len(cities)):
+        cities.append(f"Dummy{i}")
+        pops.append(0)
+
+    plt.subplots()
+    plt.pie(pops, labels=cities, autopct='%1.1f%%', shadow=True, startangle=90)
+    plt.title('Cities by Population in Nebraska', fontsize=16)
+    plt.savefig('cities_by_pop_NE.png')
