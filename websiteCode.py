@@ -1,36 +1,35 @@
 import requests
 from bs4 import BeautifulSoup
-import matplotlib.pyplot as plt
+import sqlite3
 
-# URL of the page to scrape
-url = "https://www.nevada-demographics.com/cities_by_population"
+# Connect to the database and create a table if it doesn't exist
+conn = sqlite3.connect('cities.db')
+c = conn.cursor()
+c.execute('''CREATE TABLE IF NOT EXISTS populations (id INTEGER PRIMARY KEY, city TEXT UNIQUE, population INTEGER)''')
 
-# Send a GET request to the URL
+# BeautifulSoup Scraping
+url = 'https://www.nevada-demographics.com/cities_by_population'
 response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
 
-# Parse the HTML content of the page using Beautiful Soup
-soup = BeautifulSoup(response.content, "html.parser")
+# Get table of cities and populations
+table = soup.find('table')
+rows = table.find_all('tr')[1:]  
 
-# Find the table element containing the city population data
-table = soup.find("table")
-
-# Extract the city names and populations from the table rows
-cities = []
-populations = []
+# Loop through the rows and insert the data into the database
 count = 0
-for row in table.find_all("tr")[1:]:
-    if count > 125:
+for row in rows:
+    columns = row.find_all('td')
+    name = columns[1].text.strip()
+    population = int(columns[2].text.replace(',', ''))
+    try:
+        c.execute('INSERT INTO populations (city, population) VALUES (?, ?)', (name, population))
+        count += 1
+    except sqlite3.IntegrityError: # Ignores duplicate city names
+        pass
+    if count == 25 or name == 'Hiko':  # Limit to 25 items per run
         break
-    cols = row.find_all("td")
-    count +=1
-    city = cols[1].text.strip()
-    population = int(cols[2].text.strip().replace(",", ""))
-    cities.append(city)
-    populations.append(population)
 
-# Create a horizontal bar chart of the city populations using Matplotlib
-plt.barh(cities, populations)
-plt.xlabel("Population")
-plt.ylabel("City")
-plt.title("Nevada City Populations")
-plt.show()
+# Commit the changes and close the connection
+conn.commit()
+conn.close()
