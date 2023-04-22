@@ -4,12 +4,6 @@ import numpy as np
 from geopy.distance import distance
 from geopy.distance import geodesic
 
-
-
-
-
-
-
 from yelpapi import YelpAPI
 import os
 import sqlite3
@@ -173,3 +167,33 @@ def average_distance_between_tourist_locations_per_city():
     plt.title('Average distance between tourist attractions per city', fontsize=16)
     plt.subplots_adjust(bottom=0.2)
     plt.savefig('average_distance_between_tourist_attractions_per_city.png')
+
+
+def city_pop_proportions():
+    conn = sqlite3.connect('not_sin_city.db')
+
+    cur = conn.cursor()
+    cur.execute('SELECT city, population FROM populations')
+
+    result = cur.fetchall()
+
+    cities =[]
+    pops =[]
+    for item in result:
+        cities.append(item[0])
+        pops.append(item[1])
+
+    plt.subplots()
+    plt.pie(cities, labels=pops)
+    plt.title('Cities by Population in Nebraska', fontsize=16)
+    plt.pie(cities, explode = explode, labels=pops, autopct='%1.1f%%', shadow=True, startangle=90)
+    explode = (0, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1)  # only "explode" the 2nd slice and smallest slice
+    plt.savefig('cities_by_pop_NE.png')
+
+city_pop_proportions()
