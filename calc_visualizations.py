@@ -4,6 +4,100 @@ import numpy as np
 from geopy.distance import distance
 from geopy.distance import geodesic
 
+
+
+
+
+
+
+from yelpapi import YelpAPI
+import os
+import sqlite3
+import matplotlib
+import matplotlib.pyplot as plt
+
+def open_database(db_name):
+    path = os.path.dirname(os.path.abspath(__file__))
+    conn = sqlite3.connect(path+'/'+db_name)
+    cur = conn.cursor()
+    return cur, conn
+
+#calculation
+def highestratedhotel(cur,conn):
+    info = cur.execute("select hotel_name, city, rating, cost from YelpData order by city")
+    cs = info.fetchall()
+    highestRated = {}
+
+    # Loop through the list of hotels and update the dictionary if we find a higher rated hotel for a given city
+    for hotel in cs:
+        name, city, rating, cost = hotel
+        if city not in highestRated or rating > highestRated[city][1]:
+            highestRated[city] = (name, rating, city, cost)
+
+    # Convert the dictionary to a list of tuples
+    highestratedhotelLst = list(highestRated.values())
+
+    with open('calculations.txt', 'a') as f:
+        f.write("\n Hotel Name, Rating, City\n")
+        for hotel in highestratedhotelLst:
+            f.write("{}, {}, {}\n".format(hotel[0], hotel[1], hotel[2]))
+        f.write("\n")
+    return highestratedhotelLst
+
+#using the highest rated hotel list  
+def bargraphHotel(hotelList):
+    # Create empty lists for each category
+    hotel_names = []
+    ratings = []
+    cities = []
+
+    # Loop through each tuple in the original list and extract the data
+    for hotel in hotelList:
+        hotel_names.append(hotel[0])
+        ratings.append(hotel[1])
+        cities.append(hotel[2])
+
+    city = cities
+    values = ratings
+    
+    fig = plt.figure(figsize=(15, 8))
+    
+    # creating the bar plot
+    plt.bar(city, values, color ='maroon', width = 0.5)
+    
+    plt.xlabel("City")
+    plt.ylabel("Rating")
+    plt.title("Highest Rated Hotel for each City")
+    
+    # rotate x-axis labels for better visibility
+    plt.xticks(rotation=45)
+
+    plt.savefig('Highest Rated Hotel for each City')
+
+def scatterplot(hotelList):
+    hotel_names = []
+    ratings = []
+    cities = []
+
+    # Loop through each tuple in the original list and extract the data
+    for hotel in hotelList:
+        hotel_names.append(hotel[0])
+        ratings.append(hotel[1])
+        cities.append(hotel[2])
+
+    city = cities
+    values = ratings
+    plt.scatter(city, values, c ="blue")
+    plt.xlabel("City")
+    plt.ylabel("Hotel Ratings")
+    plt.title("Hotel Ratings by City")
+    # rotate x-axis labels for better visibility
+    plt.xticks(rotation=45)
+  
+    plt.savefig('Hotel Ratings by City.png')
+    
+    
+    
 def tourist_attractions_per_city():
   conn = sqlite3.connect('not_sin_city.db')
   cur = conn.cursor()

@@ -39,3 +39,18 @@ West Wendover: 1.57 km
 Ely: 1.22 km
 Carlin: 9.75 km
 
+
+ Hotel Name, Rating, City
+Boulder Dam Hotel, 4.5, Boulder City
+Hampton Inn & Suites Carson City, 3.5, Carson City
+TownePlace Suites Elko, 4.5, Elko
+Diamond Motel & Campground, 5, Fallon
+Comfort Suites Fernley, 4, Fernley
+M Resort Spa Casino, 4, Henderson
+The Venetian Resort Las Vegas, 4, Las Vegas
+Fairfield Inn & Suites Dallas Mesquite, 3, Mesquite
+Callville Bay Resort & Marina, 3.5, North Las Vegas
+Element Reno Experience District, 4.5, Reno
+Hampton Inn & Suites Stroud, 4, Sparks
+Best Western Plus Gold Country Inn, 4, Winnemucca
+
