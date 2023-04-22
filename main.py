@@ -14,13 +14,13 @@ import websiteCode
 
 def main():
     
-    #tomtom.tomtom_data()
+    tomtom.tomtom_data()
     websiteCode.soup_data()
     calc_visualizations.tourist_attractions_per_city()
     calc_visualizations.average_distance_between_tourist_locations_per_city()
     
-    cur, conn = calc_visualizations.open_database('YelpData.db')
-
+   
+    cur, conn = calc_visualizations.open_database('Y1elpData.db')
     high_rated = calc_visualizations.highestratedhotel(cur,conn)
     
 
