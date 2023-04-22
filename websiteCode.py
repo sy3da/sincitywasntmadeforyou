@@ -5,7 +5,7 @@ import sqlite3
 # Connect to the database and create a table if it doesn't exist
 conn = sqlite3.connect('cities.db')
 c = conn.cursor()
-c.execute('''CREATE TABLE IF NOT EXISTS cities (id INTEGER PRIMARY KEY, city TEXT UNIQUE, population INTEGER)''')
+c.execute('''CREATE TABLE IF NOT EXISTS populations (id INTEGER PRIMARY KEY, city TEXT UNIQUE, population INTEGER)''')
 
 # BeautifulSoup Scraping
 url = 'https://www.nevada-demographics.com/cities_by_population'
@@ -23,7 +23,7 @@ for row in rows:
     name = columns[1].text.strip()
     population = int(columns[2].text.replace(',', ''))
     try:
-        c.execute('INSERT INTO cities (city, population) VALUES (?, ?)', (name, population))
+        c.execute('INSERT INTO populations (city, population) VALUES (?, ?)', (name, population))
         count += 1
     except sqlite3.IntegrityError: # Ignores duplicate city names
         pass
